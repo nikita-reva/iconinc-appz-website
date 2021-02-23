@@ -9,16 +9,26 @@ We are building our first website!
 #### Frontend
 * React.js - A JavaScript library for building user interfaces
 [Docs](https://reactjs.org/docs/getting-started.html)
-* TypeScript - A superset of JavaScript that adds type definition to it
-[Docs](https://www.typescriptlang.org/docs/)
 * Styled Components - CSS in JS library
 [Docs](https://styled-components.com/docs)
+* Framer Motion - Animation library for React
+[Docs](https://www.framer.com/motion/)
+* React Spring - Animation library for React
+[Docs](https://www.react-spring.io/)
+* React Three Fiber - React renderer for threejs on the web 
+[Docs](https://github.com/pmndrs/react-three-fiber)
 
 #### Backend
 * Node.js - A JavaScript runtime built on Chrome's V8 JavaScript engine
 [Docs](https://nodejs.org/en/docs/)
 * Express.js - Fast, unopinionated, minimalist web framework for Node.js
 [Docs](https://expressjs.com/)
+
+***
+TypeScript will not be used in this project for the time being, but it is planned
+to migrate to TypeScript later on.
+* TypeScript - A superset of JavaScript that adds type definitions to it
+[Docs](https://www.typescriptlang.org/docs/)
 
 ***
 
