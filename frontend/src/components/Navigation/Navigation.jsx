@@ -2,14 +2,16 @@ import React, { useState } from 'react'
 import {
 	IconicBar,
 	IconicHamburger,
+	IconicLink,
+	IconicLogo,
 	IconicNav,
+	IconicNavLinksContainer,
 } from './styles/Navigation.styles'
 
 const Navigation = () => {
 	const [isActive, setIsActive] = useState(false)
-	const [hamburgerHovered, setHamburgerHovered] = useState(false)
 
-	const bar1 = {
+	const barOne = {
 		notActive: {
 			rotateZ: 0,
 			y: 0,
@@ -28,38 +30,32 @@ const Navigation = () => {
 				duration: 0.5,
 				bounce: 0.4,
 				stiffness: 200,
+				delay: 0.2,
 			},
 		},
 	}
-	const bar2 = {
+
+	const barTwo = {
 		notActive: {
-			// rotateZ: 0,
-			// x: 0,
-			// transition: {
-			// 	duration: 1.5,
-			// },
-			width: '100%',
+			scaleX: 1,
 			transition: {
 				type: 'spring',
 				duration: 0.6,
 				bounce: 0.4,
+				delay: 0.2,
 				stiffness: 120,
 			},
 		},
 		active: {
-			// rotateZ: 1080,
-			// x: '-30vw',
-			// transition: {
-			// 	duration: 1.2,
-			// },
-			width: 0,
+			scaleX: 0,
 			transition: {
 				ease: 'linear',
 				duration: 0.3,
 			},
 		},
 	}
-	const bar3 = {
+
+	const barThree = {
 		notActive: {
 			rotateZ: 0,
 			y: 0,
@@ -78,44 +74,69 @@ const Navigation = () => {
 				duration: 0.5,
 				bounce: 0.4,
 				stiffness: 200,
+				delay: 0.2,
+			},
+		},
+	}
+
+	const navLinks = {
+		hidden: {
+			height: 0,
+		},
+		visible: {
+			height: 200,
+			transition: {
+				type: 'spring',
+				duration: 0.5,
+				ease: 'easeIn',
+				stiffness: 160,
 			},
 		},
 	}
 
 	return (
-		<IconicNav>
-			<IconicHamburger
-				whileHover={{
-					backgroundColor: 'var(--logo-color-yellowish)',
-
-					scale: [1, 1.2, 1.1, 1.3, 1],
-					rotate: [0, 15, -15, 10, 0],
-					borderRadius: [10, 15, 5, 10, 5],
-				}}
-				transition={{
-					type: 'spring',
-					ease: 'easeIn',
-					duration: 1,
-				}}
-				onClick={() => {
-					setIsActive(!isActive)
-					console.log(isActive)
-				}}
-			>
-				<IconicBar
-					variants={bar1}
-					animate={isActive ? 'active' : 'notActive'}
-				/>
-				<IconicBar
-					variants={bar2}
-					animate={isActive ? 'active' : 'notActive'}
-				/>
-				<IconicBar
-					variants={bar3}
-					animate={isActive ? 'active' : 'notActive'}
-				/>
-			</IconicHamburger>
-		</IconicNav>
+		<>
+			<IconicNav>
+				<IconicLink to="/">
+					<IconicLogo
+						whileHover={{
+							boxShadow: '0 0 6px 1px rgba(0, 0, 0, 0.3)',
+							scale: 1.02,
+						}}
+						src={'/images/logo.png'}
+						alt="Iconic Appz Logo"
+					/>
+				</IconicLink>
+				<IconicHamburger
+					whileHover={{
+						backgroundColor: 'var(--logo-yellow)',
+					}}
+					transition={{
+						type: 'spring',
+						ease: 'easeIn',
+						duration: 1,
+					}}
+					onClick={() => setIsActive(!isActive)}
+				>
+					<IconicBar
+						variants={barOne}
+						animate={isActive ? 'active' : 'notActive'}
+					/>
+					<IconicBar
+						variants={barTwo}
+						animate={isActive ? 'active' : 'notActive'}
+					/>
+					<IconicBar
+						variants={barThree}
+						animate={isActive ? 'active' : 'notActive'}
+					/>
+				</IconicHamburger>
+			</IconicNav>
+			<IconicNavLinksContainer
+				variants={navLinks}
+				animate={isActive ? 'visible' : 'hidden'}
+			></IconicNavLinksContainer>
+		</>
 	)
 }
 
