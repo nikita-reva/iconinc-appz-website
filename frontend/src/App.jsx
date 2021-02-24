@@ -4,6 +4,7 @@ import { Route, Switch, useLocation } from 'react-router-dom'
 
 import { ComponentTestPage } from './pages'
 import { AppContext } from './contexts/ThemeContext'
+import Navigation from './components/Navigation/Navigation'
 
 function App() {
 	const location = useLocation()
@@ -17,6 +18,7 @@ function App() {
 				theme: 'light',
 			}}
 		>
+			<Navigation />
 			<Route exact path="/test" component={ComponentTestPage} />
 			<AnimatePresence exitBeforeEnter onExitComplete={doSomething}>
 				<Switch location={location} key={location.key}>

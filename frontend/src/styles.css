@@ -9,8 +9,12 @@
 }
 
 :root {
-	--bg-color: rgb(160, 41, 230);
+	--bg-color: rgb(163, 105, 51);
 	--primary-color: #080808;
+	--logo-color-redish: #c65647;
+	--logo-color-darkblueish: #1e3b44;
+	--logo-color-lightblueish: #2da4d3;
+	--logo-color-yellowish: #e2a440;
 }
 
 body {

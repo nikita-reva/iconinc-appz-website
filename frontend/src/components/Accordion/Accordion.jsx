@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { IconContext } from 'react-icons'
 import { FiPlus, FiMinus } from 'react-icons/fi'
-import { useClickOutside } from '../../hooks'
+import { useClickOutsideRef } from '../../hooks'
 
 import { AccordionData } from './Data'
 import {
@@ -22,7 +22,7 @@ const Accordion = () => {
 		setClicked(index)
 	}
 
-	const refObject = useClickOutside(() => setClicked(undefined))
+	const refObject = useClickOutsideRef(() => setClicked(undefined))
 
 	return (
 		<IconContext.Provider value={{ color: '#00ffb9', size: '25px' }}>
