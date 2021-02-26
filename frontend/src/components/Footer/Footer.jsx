@@ -1,5 +1,6 @@
 import React from 'react'
 import Scroll from 'react-scroll'
+import GlassButton from '../GlassButton/GlassButton'
 
 import {
 	IconicFooterContainer,
@@ -10,9 +11,11 @@ const Footer = () => {
 	var scroll = Scroll.animateScroll
 	return (
 		<IconicFooterContainer>
-			<IconicScrollToTopButton onClick={() => scroll.scrollToTop()}>
-				Scroll To Top
-			</IconicScrollToTopButton>
+			<GlassButton
+				glimColor="var(--iconic-yellow)"
+				btnsize="big"
+				onClick={() => scroll.scrollToTop()}
+			/>
 		</IconicFooterContainer>
 	)
 }

@@ -22,6 +22,11 @@ function App() {
 			<Route exact path="/test" component={ComponentTestPage} />
 			<AnimatePresence exitBeforeEnter onExitComplete={doSomething}>
 				<Switch location={location} key={location.key}>
+					<Route path="/">
+						<ComponentTestPage />
+						<ComponentTestPage />
+						<ComponentTestPage />
+					</Route>
 					<Route path="/testswitch">
 						<ComponentTestPage />
 						<ComponentTestPage />
