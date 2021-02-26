@@ -113,6 +113,7 @@ export const GlassButtonLink = styled(Link)`
 
 export const GlassButtonBtn = styled.button`
 	position: absolute;
+	cursor: pointer;
 	border: none;
 	top: 0;
 	left: 0;

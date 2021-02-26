@@ -14,7 +14,13 @@ const Footer = () => {
 			<GlassButton
 				glimColor="var(--iconic-yellow)"
 				btnsize="big"
-				onClick={() => scroll.scrollToTop()}
+				onClick={() =>
+					scroll.scrollToTop({
+						delay: 50,
+						duration: 1000,
+						smooth: 'easeInOutQuad',
+					})
+				}
 			/>
 		</IconicFooterContainer>
 	)
