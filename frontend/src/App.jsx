@@ -4,7 +4,7 @@ import { Route, Switch, useLocation } from 'react-router-dom'
 
 import { ComponentTestPage } from './pages'
 import { AppContext } from './contexts/ThemeContext'
-import Navigation from './components/Navigation/Navigation'
+import { Navigation, Footer } from './components'
 
 function App() {
 	const location = useLocation()
@@ -24,9 +24,12 @@ function App() {
 				<Switch location={location} key={location.key}>
 					<Route path="/testswitch">
 						<ComponentTestPage />
+						<ComponentTestPage />
+						<ComponentTestPage />
 					</Route>
 				</Switch>
 			</AnimatePresence>
+			<Footer />
 		</AppContext.Provider>
 	)
 }

@@ -1,107 +1,47 @@
 import React, { useState } from 'react'
+import { GrInstagram, GrLinkedinOption, GrTwitter } from 'react-icons/gr'
+
+import { useClickOutsideRef } from '../../hooks'
+
 import {
+	barOneVariants,
+	barTwoVariants,
+	barThreeVariants,
+	navLinksContainerVariants,
+	navLinkVariants,
+	socialLinksVariants,
+	socialIconVariants,
+	linkHover,
+} from './styles/Navigation.animations'
+
+import {
+	IconicNavContainer,
+	IconicNav,
 	IconicBar,
 	IconicHamburger,
 	IconicLink,
 	IconicLogo,
-	IconicNav,
 	IconicNavLinksContainer,
+	IconicNavLinks,
+	IconicSocialLinks,
+	IconicSocialIcon,
+	IconicNavLinkWrapper,
+	IconicNavLink,
 } from './styles/Navigation.styles'
 
 const Navigation = () => {
 	const [isActive, setIsActive] = useState(false)
 
-	const barOne = {
-		notActive: {
-			rotateZ: 0,
-			y: 0,
-			transition: {
-				type: 'spring',
-				duration: 0.5,
-				bounce: 0.4,
-				stiffness: 200,
-			},
-		},
-		active: {
-			rotateZ: 45,
-			y: 10,
-			transition: {
-				type: 'spring',
-				duration: 0.5,
-				bounce: 0.4,
-				stiffness: 200,
-				delay: 0.2,
-			},
-		},
-	}
-
-	const barTwo = {
-		notActive: {
-			scaleX: 1,
-			transition: {
-				type: 'spring',
-				duration: 0.6,
-				bounce: 0.4,
-				delay: 0.2,
-				stiffness: 120,
-			},
-		},
-		active: {
-			scaleX: 0,
-			transition: {
-				ease: 'linear',
-				duration: 0.3,
-			},
-		},
-	}
-
-	const barThree = {
-		notActive: {
-			rotateZ: 0,
-			y: 0,
-			transition: {
-				type: 'spring',
-				duration: 0.5,
-				bounce: 0.4,
-				stiffness: 200,
-			},
-		},
-		active: {
-			rotateZ: -45,
-			y: -10,
-			transition: {
-				type: 'spring',
-				duration: 0.5,
-				bounce: 0.4,
-				stiffness: 200,
-				delay: 0.2,
-			},
-		},
-	}
-
-	const navLinks = {
-		hidden: {
-			height: 0,
-		},
-		visible: {
-			height: 200,
-			transition: {
-				type: 'spring',
-				duration: 0.5,
-				ease: 'easeIn',
-				stiffness: 160,
-			},
-		},
-	}
+	const clickOutsideElement = useClickOutsideRef(() => setIsActive(false))
 
 	return (
-		<>
+		<IconicNavContainer ref={clickOutsideElement}>
 			<IconicNav>
 				<IconicLink to="/">
 					<IconicLogo
 						whileHover={{
 							boxShadow: '0 0 6px 1px rgba(0, 0, 0, 0.3)',
-							scale: 1.02,
+							scale: 1.04,
 						}}
 						src={'/images/logo.png'}
 						alt="Iconic Appz Logo"
@@ -109,7 +49,7 @@ const Navigation = () => {
 				</IconicLink>
 				<IconicHamburger
 					whileHover={{
-						backgroundColor: 'var(--logo-yellow)',
+						backgroundColor: 'var(--iconic-yellow)',
 					}}
 					transition={{
 						type: 'spring',
@@ -119,24 +59,85 @@ const Navigation = () => {
 					onClick={() => setIsActive(!isActive)}
 				>
 					<IconicBar
-						variants={barOne}
+						variants={barOneVariants}
 						animate={isActive ? 'active' : 'notActive'}
 					/>
 					<IconicBar
-						variants={barTwo}
+						variants={barTwoVariants}
 						animate={isActive ? 'active' : 'notActive'}
 					/>
 					<IconicBar
-						variants={barThree}
+						variants={barThreeVariants}
 						animate={isActive ? 'active' : 'notActive'}
 					/>
 				</IconicHamburger>
 			</IconicNav>
-			<IconicNavLinksContainer
-				variants={navLinks}
-				animate={isActive ? 'visible' : 'hidden'}
-			></IconicNavLinksContainer>
-		</>
+			<IconicNavLinksContainer>
+				<IconicNavLinks
+					initial={false}
+					variants={navLinksContainerVariants}
+					animate={isActive ? 'visible' : 'hidden'}
+				>
+					<IconicNavLinkWrapper
+						initial={false}
+						variants={navLinkVariants}
+						whileHover={linkHover}
+					>
+						<IconicNavLink to="/">Home</IconicNavLink>
+					</IconicNavLinkWrapper>
+					<IconicNavLinkWrapper
+						initial={false}
+						variants={navLinkVariants}
+						whileHover={linkHover}
+					>
+						<IconicNavLink to="/test">Work</IconicNavLink>
+					</IconicNavLinkWrapper>
+					<IconicNavLinkWrapper
+						initial={false}
+						variants={navLinkVariants}
+						whileHover={linkHover}
+					>
+						<IconicNavLink to="/test">Team</IconicNavLink>
+					</IconicNavLinkWrapper>
+					<IconicNavLinkWrapper
+						initial={false}
+						variants={navLinkVariants}
+						whileHover={linkHover}
+					>
+						<IconicNavLink to="/test">Contact</IconicNavLink>
+					</IconicNavLinkWrapper>
+				</IconicNavLinks>
+				<IconicSocialLinks
+					variants={socialLinksVariants}
+					animate={isActive ? 'visible' : 'hidden'}
+				>
+					<IconicSocialIcon
+						variants={socialIconVariants}
+						href="https://www.instagram.com/iconicappz/"
+						target="_blank"
+						whileHover={linkHover}
+					>
+						<GrInstagram />
+					</IconicSocialIcon>
+					<IconicSocialIcon
+						variants={socialIconVariants}
+						href="https://www.linkedin.com/company/71537625/admin/"
+						target="_blank"
+						whileHover={linkHover}
+					>
+						<GrLinkedinOption />
+					</IconicSocialIcon>
+					<IconicSocialIcon
+						variants={socialIconVariants}
+						href="https://twitter.com/?lang=en"
+						target="_blank"
+						whileHover={linkHover}
+					>
+						<GrTwitter />
+					</IconicSocialIcon>
+				</IconicSocialLinks>
+			</IconicNavLinksContainer>
+		</IconicNavContainer>
 	)
 }
 
