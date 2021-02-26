@@ -60,10 +60,16 @@ export const IconicNavLinks = styled(motion.ul)`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	gap: 24px;
+	flex-direction: row;
 	background: var(--iconic-yellow);
+
+	@media screen and (max-width: 991px) {
+		flex-direction: column;
+	}
 `
 export const IconicNavLinkWrapper = styled(motion.li)`
-	width: 200px;
+	width: auto;
 	list-style: none;
 `
 export const IconicNavLink = styled(Link)`
@@ -72,6 +78,10 @@ export const IconicNavLink = styled(Link)`
 	font-size: 3rem;
 	color: var(--iconic-darkblue);
 	text-decoration: none;
+
+	@media screen and (max-width: 991px) {
+		font-size: 2rem;
+	}
 `
 
 export const IconicSocialLinks = styled(motion.div)`

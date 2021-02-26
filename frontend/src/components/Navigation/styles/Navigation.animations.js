@@ -1,3 +1,38 @@
+// Hover animations
+export const logoHover = {
+	boxShadow: '0 0 6px 1px rgba(0, 0, 0, 0.3)',
+	scale: 1.04,
+}
+
+export const hamburgerHover = {
+	backgroundColor: 'var(--iconic-yellow)',
+	transition: {
+		type: 'spring',
+		ease: 'easeIn',
+		duration: 1,
+	},
+}
+
+export const linkHover = {
+	scale: 1.1,
+	transition: {
+		type: 'spring',
+		mass: 1.2,
+		damping: 4,
+		stiffness: 1000,
+	},
+}
+
+export const socialHover = {
+	scale: 1.2,
+	transition: {
+		type: 'spring',
+		mass: 2,
+		stiffness: 800,
+	},
+}
+
+// Variants
 export const barOneVariants = {
 	notActive: {
 		rotateZ: 0,
@@ -5,7 +40,6 @@ export const barOneVariants = {
 		transition: {
 			type: 'spring',
 			duration: 0.5,
-			bounce: 0.4,
 			stiffness: 200,
 		},
 	},
@@ -14,8 +48,6 @@ export const barOneVariants = {
 		y: 10,
 		transition: {
 			type: 'spring',
-			duration: 0.5,
-			bounce: 0.4,
 			stiffness: 200,
 			delay: 0.2,
 		},
@@ -28,7 +60,6 @@ export const barTwoVariants = {
 		transition: {
 			type: 'spring',
 			duration: 0.6,
-			bounce: 0.4,
 			delay: 0.2,
 			stiffness: 120,
 		},
@@ -48,8 +79,6 @@ export const barThreeVariants = {
 		y: 0,
 		transition: {
 			type: 'spring',
-			duration: 0.5,
-			bounce: 0.4,
 			stiffness: 200,
 		},
 	},
@@ -58,19 +87,16 @@ export const barThreeVariants = {
 		y: -10,
 		transition: {
 			type: 'spring',
-			duration: 0.5,
-			bounce: 0.4,
 			stiffness: 200,
 			delay: 0.2,
 		},
 	},
 }
 
-export const navLinksContainerVariants = {
+export const navLinksContainerVariantsDesktop = {
 	hidden: {
 		height: 0,
 		transition: {
-			delay: 0.2,
 			type: 'tween',
 			duration: 0.4,
 			ease: 'easeIn',
@@ -83,7 +109,6 @@ export const navLinksContainerVariants = {
 		height: 200,
 		transition: {
 			type: 'spring',
-			duration: 0.5,
 			ease: 'easeIn',
 			stiffness: 160,
 			when: 'beforeChildren',
@@ -92,12 +117,55 @@ export const navLinksContainerVariants = {
 	},
 }
 
-export const navLinkVariants = {
+export const navLinksContainerVariantsMobile = {
 	hidden: {
+		height: 0,
+		transition: {
+			type: 'tween',
+			duration: 0.4,
+			ease: 'easeIn',
+			when: 'afterChildren',
+			staggerChildren: 0.2,
+			staggerDirection: -1,
+		},
+	},
+	visible: {
+		height: 300,
+		transition: {
+			type: 'spring',
+			ease: 'easeIn',
+			stiffness: 160,
+			when: 'beforeChildren',
+			staggerChildren: 0.2,
+		},
+	},
+}
+
+export const navLinkVariantsDesktop = {
+	hidden: {
+		x: 0,
 		y: -300,
 	},
 	visible: {
+		x: 0,
 		y: 0,
+	},
+}
+
+export const navLinkVariantsMobile = {
+	hidden: {
+		y: 0,
+		x: '-70vw',
+	},
+	visible: {
+		y: 0,
+		x: 0,
+		transition: {
+			type: 'spring',
+			velocity: 5,
+			restSpeed: 5,
+			ease: 'easeIn',
+		},
 	},
 }
 
@@ -128,14 +196,5 @@ export const socialIconVariants = {
 	visible: {
 		opacity: 1,
 		x: 0,
-	},
-}
-
-export const linkHover = {
-	scale: 1.2,
-	transition: {
-		type: 'spring',
-		mass: 2,
-		stiffness: 800,
 	},
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { GrInstagram, GrLinkedinOption, GrTwitter } from 'react-icons/gr'
 
 import { useClickOutsideRef } from '../../hooks'
@@ -7,11 +7,16 @@ import {
 	barOneVariants,
 	barTwoVariants,
 	barThreeVariants,
-	navLinksContainerVariants,
-	navLinkVariants,
+	navLinksContainerVariantsDesktop,
+	navLinksContainerVariantsMobile,
+	navLinkVariantsDesktop,
+	navLinkVariantsMobile,
 	socialLinksVariants,
 	socialIconVariants,
 	linkHover,
+	logoHover,
+	socialHover,
+	hamburgerHover,
 } from './styles/Navigation.animations'
 
 import {
@@ -31,6 +36,13 @@ import {
 
 const Navigation = () => {
 	const [isActive, setIsActive] = useState(false)
+	const [windowWidth, setWidowWidth] = useState(window.innerWidth)
+
+	useEffect(() => {
+		window.addEventListener('resize', () => {
+			setWidowWidth(window.innerWidth)
+		})
+	})
 
 	const clickOutsideElement = useClickOutsideRef(() => setIsActive(false))
 
@@ -39,23 +51,13 @@ const Navigation = () => {
 			<IconicNav>
 				<IconicLink to="/">
 					<IconicLogo
-						whileHover={{
-							boxShadow: '0 0 6px 1px rgba(0, 0, 0, 0.3)',
-							scale: 1.04,
-						}}
+						whileHover={logoHover}
 						src={'/images/logo.png'}
 						alt="Iconic Appz Logo"
 					/>
 				</IconicLink>
 				<IconicHamburger
-					whileHover={{
-						backgroundColor: 'var(--iconic-yellow)',
-					}}
-					transition={{
-						type: 'spring',
-						ease: 'easeIn',
-						duration: 1,
-					}}
+					whileHover={hamburgerHover}
 					onClick={() => setIsActive(!isActive)}
 				>
 					<IconicBar
@@ -75,33 +77,53 @@ const Navigation = () => {
 			<IconicNavLinksContainer>
 				<IconicNavLinks
 					initial={false}
-					variants={navLinksContainerVariants}
+					variants={
+						windowWidth > 991
+							? navLinksContainerVariantsDesktop
+							: navLinksContainerVariantsMobile
+					}
 					animate={isActive ? 'visible' : 'hidden'}
 				>
 					<IconicNavLinkWrapper
 						initial={false}
-						variants={navLinkVariants}
+						variants={
+							windowWidth >= 991
+								? navLinkVariantsDesktop
+								: navLinkVariantsMobile
+						}
 						whileHover={linkHover}
 					>
 						<IconicNavLink to="/">Home</IconicNavLink>
 					</IconicNavLinkWrapper>
 					<IconicNavLinkWrapper
 						initial={false}
-						variants={navLinkVariants}
+						variants={
+							windowWidth >= 991
+								? navLinkVariantsDesktop
+								: navLinkVariantsMobile
+						}
 						whileHover={linkHover}
 					>
 						<IconicNavLink to="/test">Work</IconicNavLink>
 					</IconicNavLinkWrapper>
 					<IconicNavLinkWrapper
 						initial={false}
-						variants={navLinkVariants}
+						variants={
+							windowWidth >= 991
+								? navLinkVariantsDesktop
+								: navLinkVariantsMobile
+						}
 						whileHover={linkHover}
 					>
 						<IconicNavLink to="/test">Team</IconicNavLink>
 					</IconicNavLinkWrapper>
 					<IconicNavLinkWrapper
 						initial={false}
-						variants={navLinkVariants}
+						variants={
+							windowWidth >= 991
+								? navLinkVariantsDesktop
+								: navLinkVariantsMobile
+						}
 						whileHover={linkHover}
 					>
 						<IconicNavLink to="/test">Contact</IconicNavLink>
@@ -115,7 +137,7 @@ const Navigation = () => {
 						variants={socialIconVariants}
 						href="https://www.instagram.com/iconicappz/"
 						target="_blank"
-						whileHover={linkHover}
+						whileHover={socialHover}
 					>
 						<GrInstagram />
 					</IconicSocialIcon>
@@ -123,7 +145,7 @@ const Navigation = () => {
 						variants={socialIconVariants}
 						href="https://www.linkedin.com/company/71537625/admin/"
 						target="_blank"
-						whileHover={linkHover}
+						whileHover={socialHover}
 					>
 						<GrLinkedinOption />
 					</IconicSocialIcon>
@@ -131,7 +153,7 @@ const Navigation = () => {
 						variants={socialIconVariants}
 						href="https://twitter.com/?lang=en"
 						target="_blank"
-						whileHover={linkHover}
+						whileHover={socialHover}
 					>
 						<GrTwitter />
 					</IconicSocialIcon>

@@ -12,7 +12,7 @@ const Footer = () => {
 	return (
 		<IconicFooterContainer>
 			<GlassButton
-				glimColor="var(--iconic-yellow)"
+				glimColor="var(--iconic-turquoise)"
 				btnsize="big"
 				onClick={() =>
 					scroll.scrollToTop({
