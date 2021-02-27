@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { GrInstagram, GrLinkedinOption, GrTwitter } from 'react-icons/gr'
+import { AnimateSharedLayout } from 'framer-motion'
 
 import { useClickOutsideRef } from '../../hooks'
 
@@ -32,10 +33,14 @@ import {
 	IconicSocialIcon,
 	IconicNavLinkWrapper,
 	IconicNavLink,
+	IconicNavLinkMarker,
 } from './styles/Navigation.styles'
+
+import { navLinks } from './Data'
 
 const Navigation = () => {
 	const [isActive, setIsActive] = useState(false)
+	const [selected, setSelected] = useState(null)
 	const [windowWidth, setWidowWidth] = useState(window.innerWidth)
 
 	useEffect(() => {
@@ -84,50 +89,39 @@ const Navigation = () => {
 					}
 					animate={isActive ? 'visible' : 'hidden'}
 				>
-					<IconicNavLinkWrapper
-						initial={false}
-						variants={
-							windowWidth >= 991
-								? navLinkVariantsDesktop
-								: navLinkVariantsMobile
-						}
-						whileHover={linkHover}
-					>
-						<IconicNavLink to="/">Home</IconicNavLink>
-					</IconicNavLinkWrapper>
-					<IconicNavLinkWrapper
-						initial={false}
-						variants={
-							windowWidth >= 991
-								? navLinkVariantsDesktop
-								: navLinkVariantsMobile
-						}
-						whileHover={linkHover}
-					>
-						<IconicNavLink to="/test">Work</IconicNavLink>
-					</IconicNavLinkWrapper>
-					<IconicNavLinkWrapper
-						initial={false}
-						variants={
-							windowWidth >= 991
-								? navLinkVariantsDesktop
-								: navLinkVariantsMobile
-						}
-						whileHover={linkHover}
-					>
-						<IconicNavLink to="/test">Team</IconicNavLink>
-					</IconicNavLinkWrapper>
-					<IconicNavLinkWrapper
-						initial={false}
-						variants={
-							windowWidth >= 991
-								? navLinkVariantsDesktop
-								: navLinkVariantsMobile
-						}
-						whileHover={linkHover}
-					>
-						<IconicNavLink to="/test">Contact</IconicNavLink>
-					</IconicNavLinkWrapper>
+					<AnimateSharedLayout>
+						{navLinks.map((link, index) => (
+							<IconicNavLinkWrapper
+								key={index}
+								onClick={() => setSelected(index)}
+								initial={false}
+								whileHover={linkHover}
+								variants={
+									windowWidth >= 991
+										? navLinkVariantsDesktop
+										: navLinkVariantsMobile
+								}
+							>
+								<IconicNavLink to={link.to}>
+									{link.title}
+								</IconicNavLink>
+								{selected === index && (
+									<IconicNavLinkMarker
+										initial={false}
+										layoutId="marked"
+										animate={{
+											backgroundColor: link.markerColor,
+										}}
+										transition={{
+											type: 'spring',
+											stiffness: 400,
+											damping: 20,
+										}}
+									/>
+								)}
+							</IconicNavLinkWrapper>
+						))}
+					</AnimateSharedLayout>
 				</IconicNavLinks>
 				<IconicSocialLinks
 					variants={socialLinksVariants}

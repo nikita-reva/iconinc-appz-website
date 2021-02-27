@@ -14,12 +14,10 @@ export const hamburgerHover = {
 }
 
 export const linkHover = {
-	scale: 1.1,
+	scale: [1, 1.05, 1],
 	transition: {
-		type: 'spring',
-		mass: 1.2,
-		damping: 4,
-		stiffness: 1000,
+		type: 'tween',
+		duration: 0.3,
 	},
 }
 

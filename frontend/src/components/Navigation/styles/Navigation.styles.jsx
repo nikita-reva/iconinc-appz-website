@@ -62,13 +62,14 @@ export const IconicNavLinks = styled(motion.ul)`
 	justify-content: center;
 	gap: 24px;
 	flex-direction: row;
-	background: var(--iconic-yellow);
+	background: var(--iconic-lightblue);
 
 	@media screen and (max-width: 991px) {
 		flex-direction: column;
 	}
 `
 export const IconicNavLinkWrapper = styled(motion.li)`
+	position: relative;
 	width: auto;
 	list-style: none;
 `
@@ -82,6 +83,16 @@ export const IconicNavLink = styled(Link)`
 	@media screen and (max-width: 991px) {
 		font-size: 2rem;
 	}
+`
+
+export const IconicNavLinkMarker = styled(motion.div)`
+	position: absolute;
+	bottom: -5px;
+	left: 0;
+	z-index: 0;
+	border-radius: 2px;
+	width: 100%;
+	height: 10px;
 `
 
 export const IconicSocialLinks = styled(motion.div)`
