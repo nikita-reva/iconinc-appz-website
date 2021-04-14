@@ -101,7 +101,7 @@ A more comprehensive guide can be found [here](https://www.atlassian.com/git).
 * List credentials
 ```git config --global -l```
 
-* Change fields
+* Change fields  
 ```git config --global user.name "your_name"```  
 ```git config --global user.email "your_email"```  
 ```git config --global user.password "your_password"```  
