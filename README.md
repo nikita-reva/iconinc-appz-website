@@ -13,8 +13,6 @@ We are building our first website!
 [Docs](https://styled-components.com/docs)
 * Framer Motion - Animation library for React
 [Docs](https://www.framer.com/motion/)
-* React Spring - Animation library for React
-[Docs](https://www.react-spring.io/)
 * React Three Fiber - React renderer for threejs on the web 
 [Docs](https://github.com/pmndrs/react-three-fiber)
 
@@ -98,3 +96,13 @@ A more comprehensive guide can be found [here](https://www.atlassian.com/git).
 ##### You can check the status of your local repository by using the git status command.
 * View status of your local repository
 ```git status```
+
+##### Git credentials.
+* List credentials
+```git config --global -l```
+
+* Change fields  
+```git config --global user.name "your_name"```  
+```git config --global user.email "your_email"```  
+```git config --global user.password "your_password"```  
+
