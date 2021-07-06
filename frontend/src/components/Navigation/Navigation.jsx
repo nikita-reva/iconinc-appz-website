@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { GrInstagram, GrLinkedinOption, GrTwitter } from 'react-icons/gr'
-import { AnimateSharedLayout } from 'framer-motion'
+import {
+	AnimateSharedLayout,
+	useMotionValue,
+	useTransform,
+	useViewportScroll,
+} from 'framer-motion'
 
 import { useClickOutsideRef } from '../../hooks'
 
@@ -43,6 +48,12 @@ const Navigation = () => {
 	const [selected, setSelected] = useState(null)
 	const [windowWidth, setWidowWidth] = useState(window.innerWidth)
 
+	const mouseX = useMotionValue(0)
+	const x = useTransform(mouseX, [0, 80], [0, 80])
+
+	const { scrollYProgress } = useViewportScroll()
+	const rotateZ = useTransform(scrollYProgress, [0, 1], [0, 720])
+
 	useEffect(() => {
 		window.addEventListener('resize', () => {
 			setWidowWidth(window.innerWidth)
@@ -56,6 +67,18 @@ const Navigation = () => {
 			<IconicNav>
 				<IconicLink to="/">
 					<IconicLogo
+						onMouseMove={(event) => {
+							mouseX.set(
+								event.nativeEvent.x -
+									event.nativeEvent.target.offsetLeft
+							)
+							console.log(
+								event.nativeEvent.x -
+									event.nativeEvent.target.offsetLeft
+							)
+							console.log(event)
+						}}
+						style={{ x, rotateZ }}
 						whileHover={logoHover}
 						src={'/images/logo.png'}
 						alt="Iconic Appz Logo"

@@ -128,7 +128,7 @@ export const navLinksContainerVariantsMobile = {
 		},
 	},
 	visible: {
-		height: 300,
+		height: 350,
 		transition: {
 			type: 'spring',
 			ease: 'easeIn',

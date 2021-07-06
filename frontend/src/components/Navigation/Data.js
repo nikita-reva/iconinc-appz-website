@@ -5,18 +5,23 @@ export const navLinks = [
 		markerColor: '#d46442',
 	},
 	{
-		to: '/',
+		to: '/test',
 		title: 'Work',
 		markerColor: '#f07637',
 	},
 	{
-		to: '/',
+		to: '/testswitch',
 		title: 'Team',
 		markerColor: '#fa9739',
 	},
 	{
 		to: '/',
-		title: 'Contact',
+		title: 'Blog',
 		markerColor: '#e2a440',
+	},
+	{
+		to: '/',
+		title: 'Contact',
+		markerColor: '#ffef48',
 	},
 ]
