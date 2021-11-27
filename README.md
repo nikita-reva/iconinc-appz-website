@@ -65,8 +65,8 @@ A more comprehensive guide can be found [here](https://www.atlassian.com/git).
 ##### The master branch must always be doployable and must be protected from incorrect changes.
 * Create a new branch (choose a meaningful branch name) it and switch to it:
 ```git checkout -b branch_name```
-* Create a new branch (choose a meaningful name) it and switch to it:
-```git checkout -b branch_name```
+* Create a new branch (choose a meaningful branch name):
+```git branch branch_name```
 * Switch to another branch:
 ```git checkout branch_name```
 * View all existing branches:
